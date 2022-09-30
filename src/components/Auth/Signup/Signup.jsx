@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../../assets/Logo.png';
+import AuthContext from '../../../context-store/auth/AuthContext/AuthContext';
 
 const Signup = () => {
+  const AuthCTX = useContext(AuthContext);
+
+  const signupFormHandler = (event) => {
+    // event.preventDefault();
+
+    AuthCTX.onSignup({
+      name: 'Vishal Kumar',
+      email: 'kumarvishal880288@gmail.com',
+      password: 'Password59@12',
+    });
+  };
   return (
     <>
       <div className="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md ">
@@ -52,6 +64,7 @@ const Signup = () => {
 
             <div className="flex items-center  mt-4">
               <button
+                onSubmit={signupFormHandler}
                 className="w-full px-4 py-2 leading-5 text-white transition-colors duration-300 transform bg-blue-600 rounded hover:bg-blue-800 focus:outline-none"
                 type="button"
               >

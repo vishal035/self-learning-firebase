@@ -13,19 +13,21 @@ function App() {
   const AuthCTX = useContext(AuthContext);
   const location = useLocation();
 
-  console.log(location);
-
   return (
     <>
       <BackgroundCircles />
       <Routes>
         <Route index element={<Home />} />
-        <Route path="auth" element={<AuthPage />}>
-          {/* <Route index element={<Login />} /> */}
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
-          <Route path="*" element={<NoMatch />} />
-        </Route>
+        {!AuthCTX.isLogged ? (
+          <Route path="auth" element={<AuthPage />}>
+            {/* <Route index element={<Login />} /> */}
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="*" element={<NoMatch />} />
+          </Route>
+        ) : (
+          <Route index element={<Home />} />
+        )}
         <Route
           path="dashboard"
           element={
