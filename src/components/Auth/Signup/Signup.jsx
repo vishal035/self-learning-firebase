@@ -7,7 +7,7 @@ const Signup = () => {
   const AuthCTX = useContext(AuthContext);
 
   const signupFormHandler = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
 
     AuthCTX.onSignup({
       name: 'Vishal Kumar',
@@ -27,7 +27,7 @@ const Signup = () => {
             create account
           </h3>
 
-          <form>
+          <form onSubmit={signupFormHandler}>
             <div className="w-full mt-4">
               <input
                 className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-md   focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
@@ -64,7 +64,6 @@ const Signup = () => {
 
             <div className="flex items-center  mt-4">
               <button
-                onSubmit={signupFormHandler}
                 className="w-full px-4 py-2 leading-5 text-white transition-colors duration-300 transform bg-blue-600 rounded hover:bg-blue-800 focus:outline-none"
                 type="button"
               >
