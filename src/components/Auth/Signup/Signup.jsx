@@ -65,7 +65,7 @@ const Signup = () => {
             <div className="flex items-center  mt-4">
               <button
                 className="w-full px-4 py-2 leading-5 text-white transition-colors duration-300 transform bg-blue-600 rounded hover:bg-blue-800 focus:outline-none"
-                type="button"
+                type="submit"
               >
                 Create Account
               </button>

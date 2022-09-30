@@ -18,16 +18,23 @@ function App() {
       <BackgroundCircles />
       <Routes>
         <Route index element={<Home />} />
-        {!AuthCTX.isLogged ? (
-          <Route path="auth" element={<AuthPage />}>
+        {
+          <Route
+            path="auth"
+            element={
+              !AuthCTX.isLogged ? (
+                <AuthPage />
+              ) : (
+                <Navigate to="/dashboard" state={{ from: location }} replace />
+              )
+            }
+          >
             {/* <Route index element={<Login />} /> */}
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
             <Route path="*" element={<NoMatch />} />
           </Route>
-        ) : (
-          <Route index element={<Home />} />
-        )}
+        }
         <Route
           path="dashboard"
           element={

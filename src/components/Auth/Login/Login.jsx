@@ -14,7 +14,7 @@ const Login = () => {
       password: 'Password59@12',
     });
 
-    <Navigate to={'/dashboard'} />;
+    // <Navigate to={'/dashboard'} />;
   };
   return (
     <>
@@ -58,7 +58,7 @@ const Login = () => {
 
               <button
                 className="px-4 py-2 leading-5 text-white transition-colors duration-300 transform bg-blue-600 rounded hover:bg-blue-800 focus:outline-none"
-                type="button"
+                type="submit"
               >
                 Login
               </button>
