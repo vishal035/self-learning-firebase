@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import AuthPage from './components/Auth/AuthForm';
+import Home from './components/Home/Home';
+import Login from './components/Auth/Login/Login';
+import Signup from './components/Auth/Signup/Signup';
+import BackgroundCircles from './components/MainBackground/Circles/BackgroundCircles';
+import NoMatch from './components/404/NoMatch';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BackgroundCircles />
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="auth" element={<AuthPage />}>
+          {/* <Route index element={<Login />} /> */}
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="*" element={<NoMatch />} />
+        </Route>
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
+    </>
   );
 }
 
