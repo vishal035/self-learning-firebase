@@ -1,19 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../../assets/Logo.png';
+import validator from 'validator';
 import AuthContext from '../../../context-store/auth/AuthContext/AuthContext';
 
 const Signup = () => {
   const AuthCTX = useContext(AuthContext);
+  const fullnameInputRef = useRef();
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+  const confirmPasswordInputRef = useRef();
 
   const signupFormHandler = (event) => {
     event.preventDefault();
 
-    AuthCTX.onSignup({
-      name: 'Vishal Kumar',
-      email: 'kumarvishal880288@gmail.com',
-      password: 'Password59@12',
-    });
+    if (
+      validator.isEmail(emailInputRef.current.value) &&
+      passwordInputRef.current.value.trim() ===
+        confirmPasswordInputRef.current.value.trim()
+    ) {
+      AuthCTX.onSignup({
+        name: fullnameInputRef.current.value,
+        email: emailInputRef.current.value,
+        password: passwordInputRef.current.value,
+      });
+    }
   };
   return (
     <>
@@ -30,6 +41,7 @@ const Signup = () => {
           <form onSubmit={signupFormHandler}>
             <div className="w-full mt-4">
               <input
+                ref={fullnameInputRef}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-md   focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                 type="text"
                 placeholder="Full Name"
@@ -38,6 +50,7 @@ const Signup = () => {
             </div>
             <div className="w-full mt-4">
               <input
+                ref={emailInputRef}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-md   focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                 type="email"
                 placeholder="Email Address"
@@ -47,6 +60,7 @@ const Signup = () => {
 
             <div className="w-full mt-4">
               <input
+                ref={passwordInputRef}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-md   focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                 type="password"
                 placeholder="Password"
@@ -55,6 +69,7 @@ const Signup = () => {
             </div>
             <div className="w-full mt-4">
               <input
+                ref={confirmPasswordInputRef}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-md   focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                 type="password"
                 placeholder="Confirm Password"
