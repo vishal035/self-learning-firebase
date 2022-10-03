@@ -1,8 +1,9 @@
 import React, { useContext, useRef } from 'react';
-import { Link, Navigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import validator from 'validator';
 import Logo from '../../../assets/Logo.png';
 import AuthContext from '../../../context-store/auth/AuthContext/AuthContext';
+// import ToastBar from '../../ToastBar/ToastBar';
 
 const Login = () => {
   const AuthCTX = useContext(AuthContext);
@@ -86,6 +87,7 @@ const Login = () => {
           </Link>
         </div>
       </div>
+      {/* <ToastBar /> */}
     </>
   );
 };

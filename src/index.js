@@ -4,6 +4,7 @@ import { AuthContextProvider } from './context-store/auth/AuthContext/AuthContex
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
+// import { Analytics } from './firebase/Firebase';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
