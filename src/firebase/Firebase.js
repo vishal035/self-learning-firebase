@@ -13,7 +13,7 @@ import {
   ref,
   set,
 } from 'firebase/database';
-import { getAnalytics } from 'firebase/analytics';
+import { getAnalytics, logEvent } from 'firebase/analytics';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -35,6 +35,10 @@ const FirebaseApp = initializeApp(firebaseConfig);
 const Auth = getAuth(FirebaseApp);
 const DB = getDatabase(FirebaseApp);
 const Analytics = getAnalytics(FirebaseApp);
+
+//* Analytics Logging Events
+
+logEvent(Analytics, 'notification_received');
 
 /** Main Login and Signup Function */
 
